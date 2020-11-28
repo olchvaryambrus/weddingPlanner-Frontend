@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+    <p>Kérem nevezze el az új csoportot!</p>
+    <mat-form-field>
+      <mat-label>Csoport neve</mat-label>
+      <input matInput [(ngModel)]="data.name">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="save()" [mat-dialog-close]="data.name" cdkFocusInitial>Save</button>
+  </div>

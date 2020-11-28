@@ -14,13 +14,20 @@ import {MatInputModule} from '@angular/material/input';
 import { GroupListComponent } from './group-list/group-list.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CreateGroupDialogComponent } from './create-group-dialog/create-group-dialog.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { DeleteGroupDialogComponent } from './delete-group-dialog/delete-group-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GroupStepperComponent,
-    GroupListComponent
+    GroupListComponent,
+    CreateGroupDialogComponent,
+    DeleteGroupDialogComponent
   ],
+  entryComponents: [CreateGroupDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,7 +40,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatInputModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

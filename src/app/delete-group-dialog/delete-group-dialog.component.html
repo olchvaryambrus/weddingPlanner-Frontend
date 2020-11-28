@@ -1,0 +1,7 @@
+<mat-dialog-content>
+    Biztosan törölni szeretné a {{data.name}} nevű csoportot?
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Mégse</button>
+    <button mat-raised-button color="warn" mat-dialog-close (click)="delete()">Törlés</button>
+  </mat-dialog-actions>

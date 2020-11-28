@@ -1,6 +1,9 @@
 <mat-grid-list gutterSize="15px" cols="4">
     <mat-grid-tile *ngFor="let group of groups">
-        <div class="container">
+        <div class="container" [matMenuTriggerFor]="menu" #menuTrigger>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="openDeleteDialog(group)">Delete</button>
+              </mat-menu>
             <section class="header">
                 {{group.name}}
             </section>
@@ -10,7 +13,7 @@
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
-        <div class="newGroup">
+        <div class="newGroup" (click)="openDialog()">
             <section class="header">
                 Új csoport létrehozása
             </section>
