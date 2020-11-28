@@ -11,11 +11,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import { GroupListComponent } from './group-list/group-list.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GroupStepperComponent
+    GroupStepperComponent,
+    GroupListComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,9 @@ import {MatInputModule} from '@angular/material/input';
     FormsModule,
     MatIconModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatGridListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

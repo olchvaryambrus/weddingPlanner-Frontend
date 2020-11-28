@@ -1,0 +1,22 @@
+<mat-grid-list gutterSize="15px" cols="4">
+    <mat-grid-tile *ngFor="let group of groups">
+        <div class="container">
+            <section class="header">
+                {{group.name}}
+            </section>
+            <section class="body">
+                <mat-icon>folder</mat-icon>
+            </section>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="newGroup">
+            <section class="header">
+                Új csoport létrehozása
+            </section>
+            <section class="body">
+                <mat-icon>create_new_folder</mat-icon>
+            </section>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
