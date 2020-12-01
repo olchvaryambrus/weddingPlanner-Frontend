@@ -1,0 +1,27 @@
+.progress-bar-container {
+    text-align: center;
+  }
+  
+  .lower-limit {
+    float: left;
+  }
+  
+  .higher-limit {
+    float: right;
+  }
+  
+  .progress-bar {
+    margin: 0 auto;
+  }
+
+  ::ng-deep .mat-progress-bar-fill::after {
+    background-color: #34fa02;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background: #a8a8a8;
+}
+
+::ng-deep .mat-progress-bar {
+    border-radius: 2px;
+}

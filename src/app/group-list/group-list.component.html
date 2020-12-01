@@ -1,9 +1,9 @@
 <mat-grid-list gutterSize="15px" cols="4">
-    <mat-grid-tile *ngFor="let group of groups">
-        <div class="container" [matMenuTriggerFor]="menu" #menuTrigger>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="openDeleteDialog(group)">Delete</button>
-              </mat-menu>
+    <mat-grid-tile *ngFor="let group of groups" (contextmenu)="onContextMenu($event, group)">
+        <div class="container" routerLink="/stepper">
+            <div style="visibility: hidden; position: fixed" [style.left]="contextMenuPosition.x"
+                [style.top]="contextMenuPosition.y" [matMenuTriggerFor]="contextMenu">
+            </div>
             <section class="header">
                 {{group.name}}
             </section>
@@ -11,7 +11,12 @@
                 <mat-icon>folder</mat-icon>
             </section>
         </div>
-    </mat-grid-tile>
+    </mat-grid-tile>    
+    <mat-menu #contextMenu="matMenu">
+        <ng-template matMenuContent let-item="group">
+            <button mat-menu-item (click)="openDeleteDialog(item)">Delete</button>
+        </ng-template>
+    </mat-menu>
     <mat-grid-tile>
         <div class="newGroup" (click)="openDialog()">
             <section class="header">

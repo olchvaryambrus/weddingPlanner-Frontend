@@ -18,6 +18,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CreateGroupDialogComponent } from './create-group-dialog/create-group-dialog.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { DeleteGroupDialogComponent } from './delete-group-dialog/delete-group-dialog.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { DeleteGroupDialogComponent } from './delete-group-dialog/delete-group-d
     GroupStepperComponent,
     GroupListComponent,
     CreateGroupDialogComponent,
-    DeleteGroupDialogComponent
+    DeleteGroupDialogComponent,
+    MainPageComponent,
+    ProgressBarComponent
   ],
   entryComponents: [CreateGroupDialogComponent],
   imports: [
@@ -42,7 +47,8 @@ import { DeleteGroupDialogComponent } from './delete-group-dialog/delete-group-d
     MatGridListModule,
     HttpClientModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
