@@ -24,6 +24,13 @@ export class GroupService {
     return this.http.get<TaskGroup[]>(url);
   }
 
+  getGroupById(id: string): Observable<TaskGroup>{
+    const url = `${this.groupUrl}/${id}`;
+    return this.http.get<TaskGroup>(url).pipe(
+      catchError(this.handleError<TaskGroup>(`getGroupById id=${id}`))
+    );
+  }
+
   public save(group: TaskGroup) {
     const url = `${this.groupUrl}/create`;
     return this.http.post<string>(url, group);

@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { GroupListComponent } from './group-list/group-list.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,6 +21,13 @@ import { DeleteGroupDialogComponent } from './delete-group-dialog/delete-group-d
 import { MainPageComponent } from './main-page/main-page.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { StepperPageComponent } from './stepper-page/stepper-page.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -30,7 +37,9 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     CreateGroupDialogComponent,
     DeleteGroupDialogComponent,
     MainPageComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    NavbarComponent,
+    StepperPageComponent
   ],
   entryComponents: [CreateGroupDialogComponent],
   imports: [
@@ -48,7 +57,12 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     HttpClientModule,
     MatDialogModule,
     MatMenuModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
