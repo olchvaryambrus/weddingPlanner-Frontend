@@ -1,27 +1,94 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4" style="background-color:black">
-            <form class="solution-option-form">
+            <form class="solution-option-form" #solutionOptionForm=ngForm (ngSubmit)="onSubmitOption()">
+                <div class="form-group">
+                    <label>Név</label>
+                    <input type="text" [(ngModel)]="solutionOption.name" class="form-control"
+                        placeholder="Megoldási lehetőség neve" name="optionName" id="optionName" #optionName="ngModel">
+                </div>
+
+                <div class="form-group solution-option-full-width">
+                    <label>Leírás</label>
+                    <textarea [(ngModel)]="solutionOption.text" class="form-control"
+                        placeholder="Megoldási lehetőség leírása" name="optionText" id="optionText"
+                        #optionText="ngModel"></textarea>
+                </div>
+                <button mat-button type="submit">Küldés</button>
+            </form>
+        </div>
+        <div class="col-md-4 offset-md-4" style="background-color:black">
+            <form class="note-form" #noteForm=ngForm (ngSubmit)="onSubmitNote()">
+                <div class="form-group note-full-width">
+                    <label>Message</label>
+                    <textarea #message [(ngModel)]="taskNote.text" maxlength="256" placeholder="Megjegyzés írás..."
+                        name="note" id="note" #note="ngModel" class="form-control" style="height: 140px;"></textarea>
+                </div>
+                <button class="btn-primary" type="submit">Küldés</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="background-color: rgb(108, 140, 228);">
+            <mat-card class="comment-card" *ngFor="let solutionOptions of options">
+                <mat-card-header>
+                    <mat-card-title>{{solutionOptions.name}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>{{solutionOptions.text}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>LIKE</button>
+                    <button mat-button>SHARE</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        <div class="col-md-4 offset-md-4" style="background-color: burlywood;">
+            <mat-card class="comment-card" *ngFor="let note of notes">
+                <mat-card-content>
+                    <p>{{note.text}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>LIKE</button>
+                    <button mat-button>SHARE</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+
+<!-- 
+
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4" style="background-color:black">
+            <form class="solution-option-form" #solutionOptionForm=ngForm (ngSubmit)="onSubmit()" novalidate>
                 <mat-form-field class="solution-option-full-width">
                     <mat-label>Név</mat-label>
-                    <input matInput placeholder="Megoldási lehetőség neve">
+                    <input matInput [(value)]="solutionOption.name"
+                    placeholder="Megoldási lehetőség neve" name="optionName">
                 </mat-form-field>
 
                 <mat-form-field class="solution-option-full-width">
                     <mat-label>Leírás</mat-label>
-                    <textarea matInput placeholder="Megoldási lehetőség leírása"></textarea>
+                    <textarea matInput [(value)]="solutionOption.text"
+                    placeholder="Megoldási lehetőség leírása" name="optionText"></textarea>
                 </mat-form-field>
+                <button mat-button type="submit">Küldés</button>
             </form>
         </div>
         <div class="col-md-4 offset-md-4" style="background-color:black">
-            <form class="note-form">
+            <form class="note-form" #solutionOptionForm=ngForm (ngSubmit)="onSubmit()">
                 <mat-form-field class="note-full-width" appearance="outline">
                     <mat-label>Message</mat-label>
-                    <input matInput #message maxlength="256" placeholder="Megjegyzés írás...">
+                    <input matInput #message maxlength="256" [(value)]="taskNote.text"
+                    placeholder="Megjegyzés írás..." name="note">
                     <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
                     <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
                 </mat-form-field>
-            </form>
+                <button class="btn-primary" type="submit">Küldés</button>
+            </form>            
         </div>
     </div>
     <div class="row">
@@ -52,3 +119,4 @@
         </div>
     </div>
 </div>
+-->

@@ -1,6 +1,6 @@
 import { Task } from './task';
 
-export interface TaskGroup {
+export class TaskGroup {
     id: string;
     name: string;
     isDone: boolean;

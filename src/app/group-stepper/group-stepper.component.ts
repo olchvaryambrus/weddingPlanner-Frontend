@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../group.service';
 import { TaskGroup } from '../model/task.group';
 import { Location } from '@angular/common';
+import { TaskNote } from '../model/task-note';
 
 @Component({
   selector: 'weddplan-group-stepper',
@@ -15,7 +16,7 @@ export class GroupStepperComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  group: TaskGroup;
+  group: TaskGroup = new TaskGroup;
 
   constructor(private _formBuilder: FormBuilder, private route: ActivatedRoute,
     private groupService: GroupService, private location: Location) { }
