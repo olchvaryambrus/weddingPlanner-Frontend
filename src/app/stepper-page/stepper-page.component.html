@@ -4,14 +4,16 @@
             <form class="solution-option-form" #solutionOptionForm=ngForm (ngSubmit)="onSubmitOption()">
                 <div class="form-group">
                     <label>Név</label>
+                    <!-- id="optionName" --> 
                     <input type="text" [(ngModel)]="solutionOption.name" class="form-control"
-                        placeholder="Megoldási lehetőség neve" name="optionName" id="optionName" #optionName="ngModel">
+                        placeholder="Megoldási lehetőség neve" name="optionName" #optionName="ngModel">
                 </div>
 
                 <div class="form-group solution-option-full-width">
                     <label>Leírás</label>
+                    <!-- id="optionText" -->
                     <textarea [(ngModel)]="solutionOption.text" class="form-control"
-                        placeholder="Megoldási lehetőség leírása" name="optionText" id="optionText"
+                        placeholder="Megoldási lehetőség leírása" name="optionText"
                         #optionText="ngModel"></textarea>
                 </div>
                 <button mat-button type="submit">Küldés</button>
@@ -20,9 +22,10 @@
         <div class="col-md-4 offset-md-4" style="background-color:black">
             <form class="note-form" #noteForm=ngForm (ngSubmit)="onSubmitNote()">
                 <div class="form-group note-full-width">
-                    <label>Message</label>
+                    <label>Megjegyzés</label>
+                    <!-- id="newNote" -->
                     <textarea #message [(ngModel)]="taskNote.text" maxlength="256" placeholder="Megjegyzés írás..."
-                        name="note" id="note" #note="ngModel" class="form-control" style="height: 140px;"></textarea>
+                        name="note" #note="ngModel" class="form-control" style="height: 140px;"></textarea>
                 </div>
                 <button class="btn-primary" type="submit">Küldés</button>
             </form>

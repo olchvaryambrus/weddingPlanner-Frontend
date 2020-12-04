@@ -16,7 +16,7 @@ export class SolutionOptionService {
    }
 
    getOptionsByTaskId(taskId: string): Observable<SolutionOption[]>{
-    const url = `${this.optionUrl}/${taskId}`;
+    const url = `${this.optionUrl}/taskId/${taskId}`;
     return this.http.get<SolutionOption[]>(url).pipe(
       catchError(this.handleError<SolutionOption[]>(`getOptionsByTaskId taskId=${taskId}`))
     );

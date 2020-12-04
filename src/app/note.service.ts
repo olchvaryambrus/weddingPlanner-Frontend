@@ -16,7 +16,7 @@ export class NoteService {
    }
 
    getNotesByTaskId(taskId: string): Observable<TaskNote[]>{
-    const url = `${this.noteUrl}/${taskId}`;
+    const url = `${this.noteUrl}/task/${taskId}`;
     return this.http.get<TaskNote[]>(url).pipe(
       catchError(this.handleError<TaskNote[]>(`getNotesByTaskId taskId=${taskId}`))
     );
