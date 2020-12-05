@@ -36,6 +36,13 @@ export class GroupService {
     return this.http.post<string>(url, group);
   }
 
+  updateGroup(group: TaskGroup): Observable<any> {
+    const url = `${this.groupUrl}/${group.id}`;
+    return this.http.put(url, group, this.httpOptions).pipe(
+      catchError(this.handleError<any>('updateGroup'))
+    );
+  }
+
   public delete(id: string) {
     const url = `${this.groupUrl}/${id}`;
     return this.http.delete<TaskGroup>(url, this.httpOptions).pipe(

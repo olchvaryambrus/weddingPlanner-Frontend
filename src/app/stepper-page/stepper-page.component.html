@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4" style="background-color:black">
+        <div class="col-md-4 cardHeaders" style="background-color:black">
             <form class="solution-option-form" #solutionOptionForm=ngForm (ngSubmit)="onSubmitOption()">
                 <div class="form-group">
                     <label>Név</label>
@@ -16,18 +16,18 @@
                         placeholder="Megoldási lehetőség leírása" name="optionText"
                         #optionText="ngModel"></textarea>
                 </div>
-                <button mat-button type="submit">Küldés</button>
+                <button id="optionSendBtn" style="background-color: rgb(108, 140, 228);" mat-raised-button type="submit">Küldés</button>
             </form>
         </div>
-        <div class="col-md-4 offset-md-4" style="background-color:black">
+        <div class="col-md-4 offset-md-4 cardHeaders" style="background-color:black">
             <form class="note-form" #noteForm=ngForm (ngSubmit)="onSubmitNote()">
                 <div class="form-group note-full-width">
                     <label>Megjegyzés</label>
                     <!-- id="newNote" -->
                     <textarea #message [(ngModel)]="taskNote.text" maxlength="256" placeholder="Megjegyzés írás..."
-                        name="note" #note="ngModel" class="form-control" style="height: 140px;"></textarea>
+                        name="note" #note="ngModel" class="form-control" style="height: 160px;"></textarea>
                 </div>
-                <button class="btn-primary" type="submit">Küldés</button>
+                <button mat-raised-button style="background-color: burlywood;" type="submit">Küldés</button>
             </form>
         </div>
     </div>
@@ -41,8 +41,7 @@
                     <p>{{solutionOptions.text}}</p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-button>LIKE</button>
-                    <button mat-button>SHARE</button>
+                    <button mat-button color="warn" (click)="deleteOption(solutionOptions.id)">TÖRLÉS</button>
                 </mat-card-actions>
             </mat-card>
         </div>
@@ -52,8 +51,7 @@
                     <p>{{note.text}}</p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-button>LIKE</button>
-                    <button mat-button>SHARE</button>
+                    <button mat-button color="warn" (click)="deleteNote(note.id)">TÖRLÉS</button>
                 </mat-card-actions>
             </mat-card>
         </div>

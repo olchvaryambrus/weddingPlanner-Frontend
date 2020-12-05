@@ -45,9 +45,17 @@ export class StepperPageComponent implements OnInit {
   }
 
   onSubmitNote(): void {
-    //this.task.noteList.push(this.taskNote);
-    //this.taskService.updateTask(this.task).subscribe();
     this.noteSevice.save(this.taskNote).subscribe(r => window.location.reload());
+  }
+
+  deleteOption(id: string): void {
+    this.optionService.delete(id)
+      .subscribe(r => window.location.reload());
+  }
+
+  deleteNote(id: string): void {
+    this.noteSevice.delete(id)
+      .subscribe(r => window.location.reload());
   }
 
 }

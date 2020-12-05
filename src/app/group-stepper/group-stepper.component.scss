@@ -5,3 +5,5 @@
   .mat-form-field {
     margin-top: 16px;
   }
+
+  mat-checkbox ::ng-deep .mat-checkbox-inner-container {width: 70px;height: 70px;}

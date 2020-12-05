@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GroupService } from '../group.service';
 import { TaskGroup } from '../model/task.group';
 import { Location } from '@angular/common';
@@ -18,12 +18,11 @@ export class GroupStepperComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  resultTask: Task;
 
   group: TaskGroup = new TaskGroup;
   taskList: Task[];
 
-  constructor(private _formBuilder: FormBuilder, private route: ActivatedRoute,
+  constructor(private _formBuilder: FormBuilder, private route: ActivatedRoute, public router: Router,
     private groupService: GroupService, private location: Location, private taskService: TaskService) { }
 
   ngOnInit() {
@@ -44,15 +43,21 @@ export class GroupStepperComponent implements OnInit {
       .subscribe(data => this.taskList = data);
   }
 
-  nextOrFinish(task: Task): void {
+  saveCheckBoxState(task: Task): void {
     task.group = this.group;
     this.taskService.updateTask(task)
-      .subscribe(result => this.resultTask = result);
+      .subscribe();
+    if (task.isDone === false && this.group.isDone === true){
+      this.group.isDone = false;
+      this.groupService.updateGroup(this.group)
+      .subscribe();
+    }
   }
 
-  goBack(): void {
-    this.location.back();
+  finishedGroup(task: Task): void {
+    this.saveCheckBoxState(task);
+    this.group.isDone = true;
+    this.groupService.updateGroup(this.group)
+      .subscribe(result => this.router.navigate(['home']));
   }
-
-
 }

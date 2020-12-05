@@ -42,7 +42,7 @@ export class TaskService {
 
    updateTask(task: Task): Observable<any> {
     const url = `${this.taskUrl}/${task.id}`;
-    return this.http.put(url, JSON.stringify(task), this.httpOptions).pipe(
+    return this.http.put(url, task, this.httpOptions).pipe(
       catchError(this.handleError<any>('updateWeddingTask'))
     );
   }

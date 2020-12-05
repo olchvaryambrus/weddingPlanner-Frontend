@@ -3,16 +3,20 @@
 </button>
 <div fxLayout style="height: 95%">
   <mat-horizontal-stepper [linear]="isLinear" #stepper fxLayout="column" fxFlex="100" fxLayoutAlign=" stretch">
-    <mat-step [stepControl]="firstFormGroup" *ngFor="let task of taskList" fxFlex="100"  fxLayout="column">
+    <mat-step [stepControl]="firstFormGroup" *ngFor="let task of taskList; index as i" fxFlex="100" fxLayout="column">
       <div>
         <ng-template matStepLabel>{{task.name}}</ng-template>
-        <div>
-          <mat-checkbox class="example-margin" [(ngModel)]="task.isDone">Checked</mat-checkbox>
+        <div style="height:120px; margin-top: 20px;">
+          <button mat-raised-button color="primary" matStepperPrevious *ngIf="i > 0" (click)="saveCheckBoxState(task)"
+            style="float: left;">Előző</button>
+          <button mat-raised-button color="primary" matStepperNext *ngIf="i < taskList.length-1" (click)="saveCheckBoxState(task)"
+            style="float: right;" [disabled]="!task.isDone">Következő</button>
+          <button mat-raised-button color="accent" *ngIf="i === taskList.length-1" (click)="finishedGroup(task)"
+            style="float: right;" [disabled]="!task.isDone">Befejezés</button>
+          <mat-checkbox class="example-margin d-flex justify-content-center" labelPosition="before"
+            [(ngModel)]="task.isDone"><label style="margin-top: 20px;">Megoldva</label></mat-checkbox>
         </div>
         <weddplan-stepper-page [task]="task"></weddplan-stepper-page>
-        <div>
-          <button mat-button matStepperNext  (click)="nextOrFinish(task)">Next</button>
-        </div>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

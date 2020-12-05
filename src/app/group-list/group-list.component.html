@@ -8,7 +8,8 @@
                 {{group.name}}
             </section>
             <section class="body">
-                <mat-icon>folder</mat-icon>
+                <mat-icon *ngIf="!group.isDone">folder</mat-icon>
+                <mat-icon *ngIf="group.isDone">done_outline</mat-icon>
             </section>
         </div>
     </mat-grid-tile>    
