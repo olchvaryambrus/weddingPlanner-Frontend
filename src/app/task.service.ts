@@ -33,6 +33,13 @@ export class TaskService {
     );
   }
 
+  getCountList(): Observable<number[]>{
+    const url = `${this.taskUrl}/countList`;
+    return this.http.get<number[]>(url).pipe(
+      catchError(this.handleError<number[]>(`getCountList`))
+    );
+  }
+
   getTaskListByGroupId(groupId: string): Observable<Task[]>{
     const url = `${this.taskUrl}/groupId/${groupId}`;
     return this.http.get<Task[]>(url).pipe(
@@ -40,10 +47,22 @@ export class TaskService {
     );
   }
 
-   updateTask(task: Task): Observable<any> {
+  public save(task: any) {
+    const url = `${this.taskUrl}/create`;
+    return this.http.post<any>(url, task);
+  }
+
+   updateTask(task: any): Observable<any> {
     const url = `${this.taskUrl}/${task.id}`;
     return this.http.put(url, task, this.httpOptions).pipe(
       catchError(this.handleError<any>('updateWeddingTask'))
+    );
+  }
+
+  public delete(id: string) {
+    const url = `${this.taskUrl}/${id}`;
+    return this.http.delete<Task>(url, this.httpOptions).pipe(
+      catchError(this.handleError<Task>('deleteTask'))
     );
   }
 

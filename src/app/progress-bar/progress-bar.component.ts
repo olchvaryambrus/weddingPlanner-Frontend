@@ -8,28 +8,23 @@ import { TaskService } from '../task.service';
 })
 export class ProgressBarComponent implements OnInit {
 
-  doneTasksCount: number;
-  higherLimit: number;
+  doneTasksCount: any;
+  higherLimit: any;
 
   percentage: number;
 
   constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
-    this.taskService.getCountByIsDone().subscribe(data => {
-      this.doneTasksCount = data;
+    this.taskService.getCountList().subscribe(data => {
+      this.higherLimit = data[0];
+      this.doneTasksCount = data[1];
+      this.calculatePercentage();
     });
-    this.taskService.getCountAll().subscribe(data => {
-      this.higherLimit = data
-    });
-    this.calculatePercentage();
   }
 
   calculatePercentage(): void{
-    var vmi1 = this.higherLimit/100;
-    var vmi2 = this.higherLimit%100;
-    var vmi3 = vmi1 + vmi2;
-    this.percentage = vmi3*this.doneTasksCount;
+    this.percentage = (this.doneTasksCount / this.higherLimit)*100;
   }
 
 }

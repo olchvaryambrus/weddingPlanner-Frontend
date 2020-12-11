@@ -29,6 +29,11 @@ import { MatListModule } from '@angular/material/list';
 import { StepperPageComponent } from './stepper-page/stepper-page.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { TaskStepperComponent } from './task-stepper/task-stepper.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DatepickerComponent } from './datepicker/datepicker.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MainPageComponent,
     ProgressBarComponent,
     NavbarComponent,
-    StepperPageComponent
+    StepperPageComponent,
+    TaskStepperComponent,
+    DatepickerComponent
   ],
   entryComponents: [CreateGroupDialogComponent],
   imports: [
@@ -64,7 +71,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSidenavModule,
     MatListModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

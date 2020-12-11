@@ -49,7 +49,7 @@ export class GroupListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result){
-        this.groupService.save(result).subscribe(r => window.location.reload());
+        this.groupService.save(result).subscribe(r => this.ngOnInit());
       }      
     });
   }
@@ -61,7 +61,20 @@ export class GroupListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result){
-        this.groupService.delete(group.id).subscribe(r => window.location.reload());
+        this.groupService.delete(group.id).subscribe(r => this.ngOnInit());
+      }      
+    });
+  }
+
+  openRenameDialog(group: TaskGroup): void {
+    const dialogRef = this.dialog.open(CreateGroupDialogComponent, {
+      data: {name: group.name}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        group.name = result.name;
+        this.groupService.updateGroup(group).subscribe();
       }      
     });
   }

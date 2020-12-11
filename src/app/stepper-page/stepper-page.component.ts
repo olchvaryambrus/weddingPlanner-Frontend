@@ -25,6 +25,7 @@ export class StepperPageComponent implements OnInit {
   notes: TaskNote[];
 
   options: SolutionOption[];
+  
 
   ngOnInit(): void {
     const id = this.task.id;
@@ -41,21 +42,21 @@ export class StepperPageComponent implements OnInit {
   }
 
   onSubmitOption(): void {
-    this.optionService.save(this.solutionOption).subscribe(r => window.location.reload());
+    this.optionService.save(this.solutionOption).subscribe(r => this.ngOnInit());
   }
 
   onSubmitNote(): void {
-    this.noteSevice.save(this.taskNote).subscribe(r => window.location.reload());
+    this.noteSevice.save(this.taskNote).subscribe(r => this.ngOnInit());
   }
 
   deleteOption(id: string): void {
     this.optionService.delete(id)
-      .subscribe(r => window.location.reload());
+      .subscribe(r => this.ngOnInit());
   }
 
   deleteNote(id: string): void {
     this.noteSevice.delete(id)
-      .subscribe(r => window.location.reload());
+      .subscribe(r => this.ngOnInit());
   }
 
 }

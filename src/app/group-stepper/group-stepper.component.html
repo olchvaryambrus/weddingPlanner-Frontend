@@ -1,9 +1,6 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-</button>
-<div fxLayout style="height: 95%">
-  <mat-horizontal-stepper [linear]="isLinear" #stepper fxLayout="column" fxFlex="100" fxLayoutAlign=" stretch">
-    <mat-step [stepControl]="firstFormGroup" *ngFor="let task of taskList; index as i" fxFlex="100" fxLayout="column">
+<div fxLayout style="height: 95%; margin-top: 50px;">
+  <mat-horizontal-stepper [linear]="true" #stepper fxLayout="column" fxFlex="100" fxLayoutAlign=" stretch" (selectionChange)="saveAfterTabChange($event)">
+    <mat-step [stepControl]="RandomFormGroup" *ngFor="let task of taskList; index as i" fxFlex="100" fxLayout="column" [completed]="task.isDone">
       <div>
         <ng-template matStepLabel>{{task.name}}</ng-template>
         <div style="height:120px; margin-top: 20px;">

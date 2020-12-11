@@ -1,0 +1,64 @@
+
+  <button *ngIf="!procedureFinished" mat-icon-button matTooltip="Clear all steps" (click)="onRemoveAll()">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <div *ngIf="!procedureFinished" fxLayoutAlign="center center" fxLayout="column">
+    <mat-vertical-stepper [linear]="true" #stepper class="task-stepper">
+      <mat-step *ngFor="let step of steps; let i = index" [completed]="step.completed">
+        <div class="page-body">
+          <ng-template matStepLabel>{{step.name || 'Töltse ki a feladat adatait'}}
+            <mat-icon class="delete_icon"  *ngIf="stepper.selectedIndex === i" (click)="removeStep(i)"
+              matTooltip="Remove step" matTooltipPosition="right">delete</mat-icon>
+          </ng-template>
+
+          <mat-form-field class="nameForm-full-width">
+            <mat-label>Feladat neve</mat-label>
+            <input matInput placeholder="Adja meg a feladat nevét" type="text" [(ngModel)]="step.name" (ngModelChange)="changeTaskTypeSelectionOrName($event, i)">
+          </mat-form-field>
+
+          <mat-form-field class="typeForm" appearance="fill">
+            <mat-label>Válasszon feladat típust</mat-label>
+            <mat-select [(value)]="step.type">
+              <mat-option [value]="0" (click)="changeTaskTypeSelectionOrName($event, i)">Alapértelemezett</mat-option>
+              <mat-option [value]="1" (click)="changeTaskTypeSelectionOrName($event, i)">Dátum</mat-option>
+              <mat-option [value]="2" (click)="changeTaskTypeSelectionOrName($event, i)">Helyszín</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- 
+          <mat-radio-group class="radio-group" (change)="changeStepSelection($event, i)">
+            <mat-radio-button style=" margin: 10px 0 " *ngFor="let option of stepOptions" [value]="option.value">
+              {{option.label}}
+            </mat-radio-button>
+          </mat-radio-group>
+          -->
+        </div>
+      </mat-step>
+      <mat-step state="add" [completed]="false" [editable]="false">
+        <ng-template matStepLabel>
+          <button mat-flat-button [disabled]="!allCompleted" (click)="addItem()" class="add_button" [disableRipple]="!allCompleted">
+            Add a Step
+          </button>
+        </ng-template>
+      </mat-step>
+      <ng-template matStepperIcon="edit" let-index="index">
+        {{index + 1}}
+      </ng-template>
+      <ng-template matStepperIcon="done" let-index="index">
+        {{index + 1}}
+      </ng-template>
+      <ng-template matStepperIcon="add">
+        <mat-icon>add</mat-icon>
+      </ng-template>
+    </mat-vertical-stepper>
+    <div style=" padding-left: 20px;">
+      <button mat-raised-button color="primary" (click)="handleDone()">
+        DONE
+      </button>
+    </div>
+  </div>
+  <div *ngIf="procedureFinished" style=" padding: 20px 30px;">
+    <p>Procedure created successfully.</p>
+    <button mat-raised-button color="primary" (click)="handleReset()">
+      RESET
+    </button>
+  </div>

@@ -1,5 +1,6 @@
 <div mat-dialog-content>
-    <p>Kérem nevezze el az új csoportot!</p>
+    <p *ngIf="!data.name">Kérem nevezze el az új csoportot!</p>
+    <p *ngIf="data.name">Kérem adja meg a csoport új nevét!</p>
     <mat-form-field>
       <mat-label>Csoport neve</mat-label>
       <input matInput [(ngModel)]="data.name">

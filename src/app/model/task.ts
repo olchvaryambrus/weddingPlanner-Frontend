@@ -6,7 +6,9 @@ export class Task {
     id: string;
     name: string;
     isDone: boolean;
+    type: number;
     group: TaskGroup;
     noteList: TaskNote[];
-    solutionOptions: SolutionOption[];
+    solutionOptions: SolutionOption[];  
+    date: string;
 }

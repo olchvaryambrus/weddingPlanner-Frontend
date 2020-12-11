@@ -15,7 +15,9 @@
     </mat-grid-tile>    
     <mat-menu #contextMenu="matMenu">
         <ng-template matMenuContent let-item="group">
-            <button mat-menu-item (click)="openDeleteDialog(item)">Delete</button>
+            <button mat-menu-item routerLink="/group/{{item.id}}/tasks/update">Feladatok kezelése</button>
+            <button mat-menu-item (click)="openRenameDialog(item)">Név lecserélése</button>
+            <button mat-menu-item (click)="openDeleteDialog(item)">Törlés</button>
         </ng-template>
     </mat-menu>
     <mat-grid-tile>
