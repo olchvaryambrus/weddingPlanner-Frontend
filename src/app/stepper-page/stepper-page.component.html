@@ -2,6 +2,10 @@
     <div class="row" style="justify-content: center;">
         <weddplan-datepicker [task]="task" *ngIf="task.type === 1"></weddplan-datepicker>
     </div>
+    <div class="row" style="justify-content: center;" *ngIf="task.type === 2">
+        <weddplan-address-form [task]="task"></weddplan-address-form>
+        <weddplan-google-map></weddplan-google-map>
+    </div>
     <div class="row">
         <div class="col-md-4 cardHeaders" style="background-color:black">
             <form class="solution-option-form" #solutionOptionForm=ngForm (ngSubmit)="onSubmitOption()">

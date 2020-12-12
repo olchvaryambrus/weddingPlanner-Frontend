@@ -11,4 +11,8 @@ export class Task {
     noteList: TaskNote[];
     solutionOptions: SolutionOption[];  
     date: string;
+    street: string;
+    houseNum: string;
+    city: string;
+    postalCode: string;
 }

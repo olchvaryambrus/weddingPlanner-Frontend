@@ -34,6 +34,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DatepickerComponent } from './datepicker/datepicker.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { GoogleMapComponent } from './google-map/google-map.component';
+import { AddressFormComponent } from './address-form/address-form.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,9 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
     NavbarComponent,
     StepperPageComponent,
     TaskStepperComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    GoogleMapComponent,
+    AddressFormComponent
   ],
   entryComponents: [CreateGroupDialogComponent],
   imports: [
@@ -74,7 +79,8 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
     MatCheckboxModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
