@@ -72,6 +72,10 @@ export class GroupStepperComponent implements OnInit {
           this.groupService.updateGroup(this.group)
           return;
         }
+        if(i === 0){
+          this.saveCheckBoxState(this.taskList[i]);
+          return;
+        }
         else {
           this.saveCheckBoxState(this.taskList[i-1]);
           return;

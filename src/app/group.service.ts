@@ -12,7 +12,7 @@ export class GroupService {
   private groupUrl: string;
 
   constructor(private http: HttpClient) {
-    this.groupUrl = 'http://localhost:8080/groups';
+    this.groupUrl = '/api/groups';
    }
 
    httpOptions = {

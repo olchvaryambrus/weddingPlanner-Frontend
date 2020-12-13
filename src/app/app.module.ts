@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { GroupListComponent } from './group-list/group-list.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateGroupDialogComponent } from './create-group-dialog/create-group-dialog.component';
 import { MatMenuModule } from '@angular/material/menu';
@@ -37,6 +37,10 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { GoogleMapComponent } from './google-map/google-map.component';
 import { AddressFormComponent } from './address-form/address-form.component';
+import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { TokenInterceptorService } from './auth/token-interceptor.service';
+//import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +56,9 @@ import { AddressFormComponent } from './address-form/address-form.component';
     TaskStepperComponent,
     DatepickerComponent,
     GoogleMapComponent,
-    AddressFormComponent
+    AddressFormComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   entryComponents: [CreateGroupDialogComponent],
   imports: [
@@ -82,7 +88,10 @@ import { AddressFormComponent } from './address-form/address-form.component';
     MatNativeDateModule,
     GoogleMapsModule
   ],
-  providers: [],
+  // providers: [AuthService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

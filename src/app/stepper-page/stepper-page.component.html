@@ -4,37 +4,38 @@
     </div>
     <div class="row" style="justify-content: center;" *ngIf="task.type === 2">
         <weddplan-address-form [task]="task"></weddplan-address-form>
-        <weddplan-google-map></weddplan-google-map>
+  <!--  <weddplan-google-map></weddplan-google-map>  -->
     </div>
     <div class="row">
         <div class="col-md-4 cardHeaders" style="background-color:black">
             <form class="solution-option-form" #solutionOptionForm=ngForm (ngSubmit)="onSubmitOption()">
                 <div class="form-group">
                     <label>Név</label>
-                    <!-- id="optionName" --> 
-                    <input type="text" [(ngModel)]="solutionOption.name" class="form-control"
-                        placeholder="Megoldási lehetőség neve" name="optionName" #optionName="ngModel">
+                    <input type="text" [(ngModel)]="solutionOption.name" class="form-control"  required
+                    [class.is-invalid]="optionName.invalid && optionName.touched" placeholder="Megoldási lehetőség neve"
+                    name="optionName" #optionName="ngModel">
                 </div>
 
                 <div class="form-group solution-option-full-width">
                     <label>Leírás</label>
-                    <!-- id="optionText" -->
                     <textarea [(ngModel)]="solutionOption.text" class="form-control"
                         placeholder="Megoldási lehetőség leírása" name="optionText"
                         #optionText="ngModel"></textarea>
                 </div>
-                <button id="optionSendBtn" style="background-color: rgb(108, 140, 228);" mat-raised-button type="submit">Küldés</button>
+                <button class="optionSendBtn" style="background-color: rgb(108, 140, 228);"
+                [disabled]="optionName.invalid" mat-raised-button type="submit">Küldés</button>
             </form>
         </div>
         <div class="col-md-4 offset-md-4 cardHeaders" style="background-color:black">
             <form class="note-form" #noteForm=ngForm (ngSubmit)="onSubmitNote()">
                 <div class="form-group note-full-width">
                     <label>Megjegyzés</label>
-                    <!-- id="newNote" -->
                     <textarea #message [(ngModel)]="taskNote.text" maxlength="256" placeholder="Megjegyzés írás..."
-                        name="note" #note="ngModel" class="form-control" style="height: 160px;"></textarea>
+                        name="note" #note="ngModel" class="form-control" style="height: 160px;"
+                        [class.is-invalid]="note.invalid && note.touched" required></textarea>
                 </div>
-                <button mat-raised-button style="background-color: burlywood;" type="submit">Küldés</button>
+                <button mat-raised-button style="background-color: burlywood;" type="submit"
+                [disabled]="note.invalid">Küldés</button>
             </form>
         </div>
     </div>

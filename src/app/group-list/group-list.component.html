@@ -1,10 +1,10 @@
-<mat-grid-list gutterSize="15px" cols="4">
+<mat-grid-list gutterSize="15px" #grid [cols]="cols">
     <mat-grid-tile *ngFor="let group of groups" (contextmenu)="onContextMenu($event, group)">
         <div class="container" routerLink="/group/{{group.id}}">
             <div style="visibility: hidden; position: fixed" [style.left]="contextMenuPosition.x"
                 [style.top]="contextMenuPosition.y" [matMenuTriggerFor]="contextMenu">
             </div>
-            <section class="header">
+            <section style="font-style: italic;" class="header">
                 {{group.name}}
             </section>
             <section class="body">

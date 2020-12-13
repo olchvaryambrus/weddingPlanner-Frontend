@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -17,18 +18,57 @@ export class GroupListComponent implements OnInit {
 
   groups: TaskGroup[];
 
-  constructor(private groupService: GroupService, public dialog: MatDialog) { }
+  @ViewChild(MatMenuTrigger)
+  contextMenu: MatMenuTrigger;
+
+  contextMenuPosition = { x: '0px', y: '0px' };
+
+  
+  cols : number;
+
+  gridByBreakpoint = {
+    xl: 4,
+    lg: 4,
+    md: 3,
+    sm: 2,
+    xs: 1
+  }
+
+
+  constructor(private groupService: GroupService, public dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver) {
+    this.breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge,
+    ]).subscribe(result => {
+      if (result.matches) {
+        if (result.breakpoints[Breakpoints.XSmall]) {
+          this.cols = this.gridByBreakpoint.xs;
+        }
+        if (result.breakpoints[Breakpoints.Small]) {
+          this.cols = this.gridByBreakpoint.sm;
+        }
+        if (result.breakpoints[Breakpoints.Medium]) {
+          this.cols = this.gridByBreakpoint.md;
+        }
+        if (result.breakpoints[Breakpoints.Large]) {
+          this.cols = this.gridByBreakpoint.lg;
+        }
+        if (result.breakpoints[Breakpoints.XLarge]) {
+          this.cols = this.gridByBreakpoint.xl;
+        }
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.groupService.findAll().subscribe(data => {
       this.groups = data;
     });
   }
-
-  @ViewChild(MatMenuTrigger)
-  contextMenu: MatMenuTrigger;
-
-  contextMenuPosition = { x: '0px', y: '0px' };
 
   onContextMenu(event: MouseEvent, group: TaskGroup) {
     event.preventDefault();
@@ -42,9 +82,7 @@ export class GroupListComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateGroupDialogComponent, {
-      //width: '250px'
       data: {name: this.name}
-      //data: {group: this.newGroup}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -78,5 +116,4 @@ export class GroupListComponent implements OnInit {
       }      
     });
   }
-
 }

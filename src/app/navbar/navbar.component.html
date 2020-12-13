@@ -4,9 +4,10 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/home" (click)="drawer.close()">Főmenü</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item routerLink="/home" *ngIf="authService.loggedIn()" (click)="drawer.close()">Főmenü</a>
+      <a mat-list-item routerLink="/login" *ngIf="!authService.loggedIn()" (click)="drawer.close()">Bejelentkezés</a>
+      <a mat-list-item routerLink="/registration" *ngIf="!authService.loggedIn()" (click)="drawer.close()">Regisztráció</a>      
+      <a mat-list-item routerLink="/login" *ngIf="authService.loggedIn()" (click)="authService.logOut(); drawer.close()">Kijelentkezés</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

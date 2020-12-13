@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Address } from '../model/address';
 import { Task } from '../model/task';
 
 @Component({
@@ -26,11 +25,14 @@ export class AddressFormComponent implements OnInit {
     this.postalCode = this.task.postalCode;
   }
 
+  /*
   send(): void {
     this.task.street = this.street;
     this.task.houseNum = this.houseNum;
     this.task.city = this.city;
     this.task.postalCode = this.postalCode;
   }
+
+  */
 
 }

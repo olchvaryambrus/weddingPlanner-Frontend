@@ -12,7 +12,7 @@ export class TaskService {
   private taskUrl: string;
 
   constructor(private http: HttpClient) {
-    this.taskUrl = 'http://localhost:8080/tasks'
+    this.taskUrl = '/api/tasks'
    }
 
    httpOptions = {
@@ -47,9 +47,10 @@ export class TaskService {
     );
   }
 
-  public save(task: any) {
+  public async save(task: any) {
     const url = `${this.taskUrl}/create`;
-    return this.http.post<any>(url, task);
+    const data = await this.http.post<any>(url, task);
+    return Promise.resolve(data)
   }
 
    updateTask(task: any): Observable<any> {
@@ -65,7 +66,14 @@ export class TaskService {
       catchError(this.handleError<Task>('deleteTask'))
     );
   }
-
+/*
+  public deleteTaskList(taskList: Task[]) {
+    const url = `${this.taskUrl}/deleteList`;
+    return this.http.delete<Task>(url, taskList).pipe(
+      catchError(this.handleError<Task>('deleteTaskList'))
+    );
+  }
+*/
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

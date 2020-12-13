@@ -12,7 +12,7 @@ export class SolutionOptionService {
   private optionUrl: string;
 
   constructor(private http: HttpClient) {
-    this.optionUrl = 'http://localhost:8080/options';
+    this.optionUrl = '/api/options';
    }
 
    httpOptions = {

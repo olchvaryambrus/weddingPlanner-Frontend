@@ -12,7 +12,7 @@ export class NoteService {
   private noteUrl: string;
 
   constructor(private http: HttpClient) {
-    this.noteUrl = 'http://localhost:8080/notes';
+    this.noteUrl = '/api/notes';
    }
 
    httpOptions = {

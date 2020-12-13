@@ -1,6 +1,10 @@
 .mat-grid-tile {
     border: solid 5px #000;
     border-radius:15px;
+    min-height: 220px;   
+    min-width: 220px; 
+    max-height: 220px;
+    max-width: 220px;
 }
 
 .container {
@@ -59,7 +63,7 @@
 }
 
 mat-icon{
-    font-size: 200px;
+    font-size: 180px;
     margin: 10px auto;
 }
 

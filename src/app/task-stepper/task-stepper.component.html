@@ -1,8 +1,9 @@
 
-  <button *ngIf="!procedureFinished" mat-icon-button matTooltip="Clear all steps" (click)="onRemoveAll()">
+  <button *ngIf="!procedureFinished" class="AlldeleteIcon" mat-icon-button matTooltip="Clear all steps" (click)="onRemoveAll()">
+    <label>Összes törlése</label>
     <mat-icon>delete</mat-icon>
   </button>
-  <div *ngIf="!procedureFinished" fxLayoutAlign="center center" fxLayout="column">
+  <div class="stepper-card" *ngIf="!procedureFinished" fxLayoutAlign="center center" fxLayout="column">
     <mat-vertical-stepper [linear]="true" #stepper class="task-stepper">
       <mat-step *ngFor="let step of steps; let i = index" [completed]="step.completed">
         <div class="page-body">
@@ -51,14 +52,8 @@
       </ng-template>
     </mat-vertical-stepper>
     <div style=" padding-left: 20px;">
-      <button mat-raised-button color="primary" (click)="handleDone()">
+      <button mat-raised-button class="doneBtn" color="primary" (click)="handleDone()">
         DONE
       </button>
     </div>
-  </div>
-  <div *ngIf="procedureFinished" style=" padding: 20px 30px;">
-    <p>Procedure created successfully.</p>
-    <button mat-raised-button color="primary" (click)="handleReset()">
-      RESET
-    </button>
   </div>
