@@ -6,8 +6,6 @@ import { TaskGroup } from '../model/task.group';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GroupService } from '../group.service';
 import { TaskService } from '../task.service';
-import { subscribeOn } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'weddplan-task-stepper',
@@ -19,7 +17,6 @@ import { Observable } from 'rxjs';
 })
 export class TaskStepperComponent implements OnInit {
 
-  isLinear = false;
   formGroup: FormGroup;
   form: FormArray;
   RandomFormGroup: FormGroup;
@@ -72,11 +69,6 @@ export class TaskStepperComponent implements OnInit {
 
   changeTaskTypeSelectionOrName(event: any, index: number) {
     if (this.steps[index].name && this.steps[index].type >= 0){
-      /*
-      setTimeout(() =>{
-        this.stepper.selectedIndex = this.steps.length;
-      },0); 
-      */
       this.steps[index].group = this.taskGroup;
       this.steps[index].completed = true;
       this.allCompleted = true;
@@ -87,7 +79,6 @@ export class TaskStepperComponent implements OnInit {
   }
 
   onRemoveAll() {
-    //this.taskService.deleteTaskList(this.taskList).subscribe();
     this.steps = [];
     this.stepper.selectedIndex = this.steps.length;
     this.allCompleted = true;
@@ -108,11 +99,9 @@ export class TaskStepperComponent implements OnInit {
     this.allCompleted = this.steps.every(step => step.completed);
   }
 
-  //itt van valami baj, ha mindenigaz
   async handleDone(){
     this.procedureFinished = true;
     for (const { index, value } of this.steps.map((value, index) => ({ index, value }))) {
-    //this.steps.forEach((value, index) => {
       if (index < this.taskList.length){
         if (this.taskList[index].name !== value.name || this.taskList[index].type != value.type){
           var DTO = { id: value.Taskid, name: value.name, type: value.type, group: value.group };
@@ -127,11 +116,7 @@ export class TaskStepperComponent implements OnInit {
     };
     this.router.navigate(['home']);
   }
-/*
-  callService(DTO: any): Observable<Task>{
-    return this.taskService.save(DTO).subscribe();
-  }
-*/
+
   handleReset(){
     this.procedureFinished = false;
     this.steps = [];

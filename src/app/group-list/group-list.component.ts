@@ -23,7 +23,6 @@ export class GroupListComponent implements OnInit {
 
   contextMenuPosition = { x: '0px', y: '0px' };
 
-  
   cols : number;
 
   gridByBreakpoint = {
@@ -33,7 +32,6 @@ export class GroupListComponent implements OnInit {
     sm: 2,
     xs: 1
   }
-
 
   constructor(private groupService: GroupService, public dialog: MatDialog,
     private breakpointObserver: BreakpointObserver) {

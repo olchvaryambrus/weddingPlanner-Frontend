@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 
-//ezt kell majd bekötni a gombokhoz a menüben
 export class AuthService {
 
   constructor(private _http: HttpClient, private _router: Router) { }

@@ -66,14 +66,7 @@ export class TaskService {
       catchError(this.handleError<Task>('deleteTask'))
     );
   }
-/*
-  public deleteTaskList(taskList: Task[]) {
-    const url = `${this.taskUrl}/deleteList`;
-    return this.http.delete<Task>(url, taskList).pipe(
-      catchError(this.handleError<Task>('deleteTaskList'))
-    );
-  }
-*/
+  
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

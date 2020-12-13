@@ -25,13 +25,6 @@
               <mat-option [value]="2" (click)="changeTaskTypeSelectionOrName($event, i)">Helyszín</mat-option>
             </mat-select>
           </mat-form-field>
-          <!-- 
-          <mat-radio-group class="radio-group" (change)="changeStepSelection($event, i)">
-            <mat-radio-button style=" margin: 10px 0 " *ngFor="let option of stepOptions" [value]="option.value">
-              {{option.label}}
-            </mat-radio-button>
-          </mat-radio-group>
-          -->
         </div>
       </mat-step>
       <mat-step state="add" [completed]="false" [editable]="false">

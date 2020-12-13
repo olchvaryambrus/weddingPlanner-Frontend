@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { SolutionOption } from '../model/solution-option';
 import { Task } from '../model/task';
 import { TaskNote } from '../model/task-note';
-import { Location } from '@angular/common';
 import { NoteService } from '../note.service';
 import { SolutionOptionService } from '../solution-option.service';
 
@@ -13,8 +12,7 @@ import { SolutionOptionService } from '../solution-option.service';
 })
 export class StepperPageComponent implements OnInit {
 
-  constructor(private optionService: SolutionOptionService, private noteSevice: NoteService,
-    private location: Location) {}
+  constructor(private optionService: SolutionOptionService, private noteSevice: NoteService) {}
 
   @Input() task: Task;
 

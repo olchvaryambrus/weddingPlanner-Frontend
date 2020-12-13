@@ -40,7 +40,6 @@ import { AddressFormComponent } from './address-form/address-form.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { TokenInterceptorService } from './auth/token-interceptor.service';
-//import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -88,7 +87,6 @@ import { TokenInterceptorService } from './auth/token-interceptor.service';
     MatNativeDateModule,
     GoogleMapsModule
   ],
-  // providers: [AuthService],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }
   ],

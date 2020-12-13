@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GroupService } from '../group.service';
 import { TaskGroup } from '../model/task.group';
-import { Location } from '@angular/common';
 import { Task } from '../model/task';
 import { TaskService } from '../task.service';
 
@@ -14,15 +13,13 @@ import { TaskService } from '../task.service';
 })
 export class GroupStepperComponent implements OnInit {
 
-  isLinear = false;
-
   group: TaskGroup = new TaskGroup;
   taskList: Task[];
 
   RandomFormGroup: FormGroup;
 
   constructor(private _formBuilder: FormBuilder, private route: ActivatedRoute, public router: Router,
-    private groupService: GroupService, private location: Location, private taskService: TaskService) { }
+    private groupService: GroupService, private taskService: TaskService) { }
 
   ngOnInit() {
     this.getTaskListAndGroup();
@@ -62,7 +59,6 @@ export class GroupStepperComponent implements OnInit {
       .subscribe(result => this.router.navigate(['home']));
   }
 
-  ///nem működik jól ha nulla pipa van
   ngOnDestroy(): void {
     for (let i = 0; i < this.taskList.length; i++){
       if(this.taskList[i].isDone === false){

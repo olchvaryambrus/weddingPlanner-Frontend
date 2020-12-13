@@ -24,15 +24,4 @@ export class AddressFormComponent implements OnInit {
     this.city = this.task.city;
     this.postalCode = this.task.postalCode;
   }
-
-  /*
-  send(): void {
-    this.task.street = this.street;
-    this.task.houseNum = this.houseNum;
-    this.task.city = this.city;
-    this.task.postalCode = this.postalCode;
-  }
-
-  */
-
 }

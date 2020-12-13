@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor} from '@angular/common/http';
-import { NONE_TYPE } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'

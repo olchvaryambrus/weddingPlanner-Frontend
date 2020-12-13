@@ -33,13 +33,13 @@
 
 .container > .header {
     flex-basis: 20%;
-    order: 1; /* Assure this is the first element, at the top */
+    order: 1;
     color: black;
 }
 
 .container > .body {
     flex: 1;
-    order: 2; /* Assure this is the second element, in the middle */
+    order: 2;
     color: black;
 }
 
@@ -54,12 +54,12 @@
 
 .newGroup > .header {
     flex-basis: 20%;
-    order: 1; /* Assure this is the first element, at the top */
+    order: 1;
 }
 
 .newGroup > .body {
     flex: 1;
-    order: 2; /* Assure this is the second element, in the middle */
+    order: 2;
 }
 
 mat-icon{
